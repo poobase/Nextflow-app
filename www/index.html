@@ -19,31 +19,32 @@
 </head>
 
 <body ng-app="starter">
-    <ion-pane>
+    <ion-pane ng-controller="IndexController">
         <ion-header-bar class="bar-stable">
             <h1 class="title">Calorie Calculate Edit</h1>
         </ion-header-bar>
         <ion-content>
             เพศ
-            <ion-radio ng-model="choice" ng-value="''">ชาย</ion-radio>
-            <ion-radio ng-model="choice" ng-value="''">หญิง</ion-radio>
+            <ion-radio ng-model="chk" ng-value="'m'">ชาย</ion-radio>
+            <ion-radio ng-model="chk" ng-value="'f'">หญิง</ion-radio>
             เมนู
             <div class="list">
                 <label class="item item-input item-floating-label">
                     <span class="input-label">ข้าวมันไก่</span>
-                    <input type="number" placeholder="ข้าวมันไก่">
+                    <input type="number" placeholder="ข้าวมันไก่" ng-model="txtMenu1">
                 </label>
                 <label class="item item-input item-floating-label">
                     <span class="input-label">ข้าวขาหมู</span>
-                    <input type="number" placeholder="ข้าวขาหมู">
+                    <input type="number" placeholder="ข้าวขาหมู" ng-model="txtMenu2">
                 </label>
                 <label class="item item-input item-floating-label">
                     <span class="input-label">กาแฟ</span>
-                    <input type="number" placeholder="กาแฟ">
+                    <input type="number" placeholder="กาแฟ" ng-model="txtMenu3">
                 </label>
-                <button class="button button-block">
+                <button class="button button-block" ng-click="calcurale(chk,txtMenu1,txtMenu2,txtMenu3)" >
                     คำนวน
                 </button>
+                <h1>{{BalanceCalorie}} Cal</h1>
             </div>
         </ion-content>
     </ion-pane>

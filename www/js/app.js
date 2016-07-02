@@ -6,19 +6,56 @@
 angular.module('starter', ['ionic'])
 
 .run(function($ionicPlatform) {
-  $ionicPlatform.ready(function() {
-    if(window.cordova && window.cordova.plugins.Keyboard) {
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+    $ionicPlatform.ready(function() {
+        if (window.cordova && window.cordova.plugins.Keyboard) {
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 
-      // Don't remove this line unless you know what you are doing. It stops the viewport
-      // from snapping when text inputs are focused. Ionic handles this internally for
-      // a much nicer keyboard experience.
-      cordova.plugins.Keyboard.disableScroll(true);
-    }
-    if(window.StatusBar) {
-      StatusBar.styleDefault();
-    }
-  });
+            // Don't remove this line unless you know what you are doing. It stops the viewport
+            // from snapping when text inputs are focused. Ionic handles this internally for
+            // a much nicer keyboard experience.
+            cordova.plugins.Keyboard.disableScroll(true);
+        }
+        if (window.StatusBar) {
+            StatusBar.styleDefault();
+        }
+    });
 })
+
+.controller('IndexController', ['$scope', function($scope) {
+    $scope.txtMenu1 = "";
+    $scope.txtMenu2 = "";
+    $scope.txtMenu3 = "";
+    $scope.BalanceCalorie = 0;
+    $scope.chk = "";
+
+    $scope.calcurale = function(pchk, ptxtMenu1, ptxtMenu2, ptxtMenu3) {
+        if (pchk == 'm') {
+            $scope.BalanceCalorie = 3000;
+            if (ptxtMenu1 != '') {
+                $scope.BalanceCalorie = $scope.BalanceCalorie - (ptxtMenu1 * 500);
+            }
+            if (ptxtMenu2 != '') {
+                $scope.BalanceCalorie = $scope.BalanceCalorie - (ptxtMenu1 * 400);
+            }
+            if (ptxtMenu3 != '') {
+                $scope.BalanceCalorie = $scope.BalanceCalorie - (ptxtMenu1 * 300);
+            }
+        } else {
+            $scope.BalanceCalorie = 2000;
+            if (ptxtMenu1 != '') {
+                $scope.BalanceCalorie = $scope.BalanceCalorie - (ptxtMenu1 * 500);
+            }
+            if (ptxtMenu2 != '') {
+                $scope.BalanceCalorie = $scope.BalanceCalorie - (ptxtMenu1 * 400);
+            }
+            if (ptxtMenu3 != '') {
+                $scope.BalanceCalorie = $scope.BalanceCalorie - (ptxtMenu1 * 300);
+            }
+        }
+
+    }
+
+
+}])
